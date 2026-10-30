@@ -1,5 +1,6 @@
 // Voorlezen (text-to-speech) en luisteren (spraakherkenning) in het Nederlands.
 import { store } from './store.js';
+import { embedded } from './env.js';
 
 const synth = typeof window !== 'undefined' && 'speechSynthesis' in window ? window.speechSynthesis : null;
 let voices = [];
@@ -80,7 +81,8 @@ export function stopSpeaking() {
 }
 
 const Recognition = typeof window !== 'undefined' ? window.SpeechRecognition || window.webkitSpeechRecognition : null;
-export const recognitionSupported = !!Recognition;
+// In een ingesloten voorbeeldweergave mag de pagina niet bij de microfoon: dan alleen tikken.
+export const recognitionSupported = !!Recognition && !embedded;
 
 /**
  * Blijft luisteren tot stop() wordt aangeroepen. Herstart vanzelf als de browser
@@ -191,6 +193,12 @@ export class Listener {
     try {
       rec.start();
     } catch {
+      this.failures++;
+      if (this.failures > 2) {
+        this.active = false;
+        this.onStatus('unsupported');
+        return;
+      }
       this.restartTimer = setTimeout(() => this.active && this.spawn(), 1000);
     }
   }

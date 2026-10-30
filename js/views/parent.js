@@ -464,7 +464,11 @@ function soundTab(body) {
       h('button', { class: 'btn', type: 'button', onclick: () => speak(`Hoi${name ? ' ' + name : ''}! Ben je sneller dan de slang?`, { force: true }) }, '▶ Stem testen')),
     h('section', { class: 'card' },
       h('h3', {}, 'Spraakbesturing'),
-      !recognitionSupported ? h('p', { class: 'note' }, 'Deze browser kan niet luisteren. Gebruik Chrome op Android. Tikken op de lampen en de KLAAR-knop werkt altijd.') : null,
+      !recognitionSupported
+        ? h('p', { class: 'note' }, embedded
+            ? 'In deze voorbeeldweergave kan de app niet luisteren. Open de app in Chrome op je tablet, dan werkt spraak wel. Tikken op de lampen en de KLAAR-knop werkt altijd.'
+            : 'Deze browser kan niet luisteren. Gebruik Chrome op Android. Tikken op de lampen en de KLAAR-knop werkt altijd.')
+        : null,
       settingRow('Starten met je stem', 'Zeg “Op je plaatsen… klaar… af!” en bij “af” begint de race', switchInput('s-start', st.settings.listenStart, 'Starten met je stem', (v) => set((x) => (x.listenStart = v))), 's-start'),
       settingRow('Stoppen met je stem', 'Je kind roept “Klaar!” en de tijd stopt', switchInput('s-stop', st.settings.listenStop, 'Stoppen met je stem', (v) => set((x) => (x.listenStop = v))), 's-stop'),
       recognitionSupported ? h('div', { class: 'mic-test' }, micBtn, micStatus, micOut) : null,
