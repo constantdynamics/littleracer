@@ -49,9 +49,20 @@ Houd het tandwiel ⚙️ rechtsboven **3 tellen vast** en los het rekensommetje 
 
 Er zitten bewust geen "snel eten"-taakjes in. De volledige lijst staat in [`js/tasks.js`](js/tasks.js).
 
+## Online zetten met GitHub Pages
+
+De app is een map met gewone bestanden en draait gratis op GitHub Pages:
+
+1. Merge de pull request naar `main`.
+2. Ga op GitHub naar **Settings → Pages**.
+3. Kies onder *Build and deployment* bij *Source* voor **Deploy from a branch**, kies branch **main** en map **/ (root)**, en klik **Save**.
+4. Na een paar minuten staat de app op **<https://constantdynamics.github.io/littleracer/>**.
+
+Elke nieuwe merge naar `main` zet GitHub vanzelf online. Verander je bestanden, verhoog dan ook `VERSION` in `sw.js`, zodat geïnstalleerde apps de nieuwe versie ophalen.
+
 ## Op je Android-tablet zetten
 
-1. Open het webadres van de app in **Chrome**.
+1. Open <https://constantdynamics.github.io/littleracer/> in **Chrome**.
 2. Open het menu (⋮) en kies **App installeren** of **Toevoegen aan startscherm**. In de ouder-modus onder *Algemeen* staat ook een knop als Chrome dat aanbiedt.
 3. Sta de **microfoon** toe als Chrome erom vraagt (nodig voor "klaar… af!" en "Klaar!").
 
@@ -92,7 +103,7 @@ npm test
 | `css/app.css` | vormgeving, licht en donker thema |
 | `tests/` | tests voor de logica (`node --test`) |
 
-Online zetten kan op elke statische host met https (GitHub Pages, Netlify, Vercel): upload de map zoals hij is. Verander je bestanden, verhoog dan `VERSION` in `sw.js` zodat geïnstalleerde apps de nieuwe versie ophalen.
+Behalve op GitHub Pages werkt de app op elke statische host met https (zoals Netlify of Vercel): upload de map zoals hij is. Het lege bestand `.nojekyll` zorgt dat GitHub Pages de bestanden ongewijzigd doorgeeft.
 
 ## Licenties
 
