@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <title>Little Racer</title>
+    <meta name="description" content="Ben jij sneller dan de slang? Een vrolijke taakjes-timer voor kleuters." />
+    <meta name="theme-color" content="#d6edff" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icons/icon-192.png" />
+    <link rel="preload" href="fonts/fredoka-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="css/app.css" />
+    <style>
+      :root {
+        padding-top: env(safe-area-inset-top, 0px);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+    </style>
+    <script type="module" src="js/main.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <noscript>Little Racer heeft JavaScript nodig. Open de app in Chrome.</noscript>
+  </body>
+</html>
